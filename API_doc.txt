@@ -1,5 +1,6 @@
 Example of filter header for 'X-Fantasy-Filter'
 
+
 { "players":{
    "filterStatus":{
      "value":["FREEAGENT","WAIVERS"]

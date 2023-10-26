@@ -6,3 +6,5 @@ params = {:api_key => "DEMO_KEY"}
 
 res = HTTP.get(uri, :params => params)
 puts 'RES BODY: ' + res.body  if res.code == 200
+
+# test
