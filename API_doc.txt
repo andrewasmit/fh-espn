@@ -1,0 +1,41 @@
+Example of filter header for 'X-Fantasy-Filter'
+
+{ "players":{
+   "filterStatus":{
+     "value":["FREEAGENT","WAIVERS"]
+     *** Excludes players who are currently owned ***
+     },
+     "filterSlotIds":{
+       "value":[0,1,2,3,4,6]
+        *** 
+        This line is different positions ***
+        0: center
+        1: Left-Wing
+        2: Right-Wing
+        3: All Forwards (No Defense)
+        4: Defenseman
+        5: Goaltender
+        6: All Skaters (no goalies)
+        ***
+     },
+     "filterRanksForScoringPeriodIds":{
+       "value":[17]
+     },
+     "sortPercChanged":{
+       "sortPriority": 1,
+       "sortAsc":false
+     },
+     "sortPercOwned":{
+       "sortPriority":2,
+       "sortAsc":false
+     },
+     "limit":50,
+      <!-- *** This line sets how many players get returned *** -->
+     "filterStatsForTopScoringPeriodIds":{
+       "value":5,
+       "additionalValue":[
+         "002024","102024","002023","012024","022024","032024","042024"
+         ]
+     }
+   }
+ }
