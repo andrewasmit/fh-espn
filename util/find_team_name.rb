@@ -1,5 +1,7 @@
 def find_team_name id
-  
+  # Take in an id and return the string of the team name
+  # The issue right now is not knowing how ESPN has index-ed their team IDs
+  # Example: LA is 8 and carolina is 7, but that is neither alphabetical by city or name
 end
 
 Anaheim Ducks 
