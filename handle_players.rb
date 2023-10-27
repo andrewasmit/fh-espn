@@ -1,4 +1,5 @@
 require 'byebug'
+require_relative './sort_players'
 
 def handle_players input_arr
   all_players_with_recent_stats = []
@@ -57,5 +58,5 @@ def handle_players input_arr
     all_players_with_recent_stats << player_with_recent_stats
   end
 
-  puts all_players_with_recent_stats
+  sort_players(all_players_with_recent_stats)
 end

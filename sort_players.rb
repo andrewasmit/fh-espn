@@ -1,5 +1,26 @@
 def sort_players all_players
+  sorted_players = all_players.sort do |a, b|
+    # Sort by games_with_points/games_played ratio (higher is better)
+    ratio_a = a[:games_with_points].to_f / a[:games_played]
+    ratio_b = b[:games_with_points].to_f / b[:games_played]
+    result = ratio_b <=> ratio_a  # Reverse order for higher priority
+  
+    # If games_with_points ratio is the same, sort by goals (higher is better)
+    result = b[:goals] <=> a[:goals] if result.zero?
+  
+    # If goals are also the same, sort by assists (higher is better)
+    result = b[:assists] <=> a[:assists] if result.zero?
+  
+    # If assists are also the same, sort by average_ppg (higher is better)
+    result = b[:average_ppg] <=> a[:average_ppg] if result.zero?
+  
+    # If all criteria are the same, negatively impact sort by bad_games (lower is better)
+    result = a[:bad_games] <=> b[:bad_games] if result.zero?
+  
+    result
+  end
 
+  sorted_players
 end
 
 
@@ -18,5 +39,12 @@ end
   :bad_games => 2
 }
 
-# What Am I holding most valuable?
-# 0 bad games
+# *** What Am I holding most valuable? ***
+# Out of how many games played, how many games_with_points ? => Send to front
+# if tied, tie breaker is goals and then assists
+# if still tied, average_ppg gets sent to front
+
+
+
+# Out of how many games played, how many are "bad" ?
+
