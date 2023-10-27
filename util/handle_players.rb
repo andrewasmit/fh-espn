@@ -1,5 +1,6 @@
 require 'byebug'
 require_relative './sort_players'
+require_relative './print_results'
 
 def handle_players input_arr
   all_players_with_recent_stats = []
@@ -58,5 +59,6 @@ def handle_players input_arr
     all_players_with_recent_stats << player_with_recent_stats
   end
 
-  sort_players(all_players_with_recent_stats)
+  sorted_players = sort_players(all_players_with_recent_stats)
+  print_results(sorted_players.slice(0,15))
 end

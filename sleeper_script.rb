@@ -4,7 +4,7 @@ require 'http'
 require 'byebug'
 require 'dotenv'
 require_relative './util/swap_quotes'
-require_relative './handle_players'
+require_relative './util/handle_players'
 Dotenv.load('./.env')
 
 
@@ -22,7 +22,7 @@ puts "6: All Skaters (F or D)"
 
 position_filter = gets.chomp
 
-filter = "{'players':{'filterStatus':{'value':['FREEAGENT','WAIVERS']},'filterSlotIds':{'value': [#{position_filter}]},'filterRanksForScoringPeriodIds':{'value':[17]},'sortPercChanged':{'sortPriority':1,'sortAsc':false}, 'sortPercOwned':{'sortPriority':2,'sortAsc':false}, 'limit': 25,'filterStatsForTopScoringPeriodIds':{'value':6,'additionalValue':['002024','102024','002023','012024','022024','032024','042024']}}}"
+filter = "{'players':{'filterStatus':{'value':['FREEAGENT','WAIVERS']},'filterSlotIds':{'value': [#{position_filter}]},'filterRanksForScoringPeriodIds':{'value':[17]},'sortPercChanged':{'sortPriority':1,'sortAsc':false}, 'sortPercOwned':{'sortPriority':2,'sortAsc':false}, 'limit': 20,'filterStatsForTopScoringPeriodIds':{'value':6,'additionalValue':['002024','102024','002023','012024','022024','032024','042024']}}}"
 filter = swap_quotes(filter)
 
 headers = {
