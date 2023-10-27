@@ -16,6 +16,7 @@ def handle_players input_arr
     multi_point_nights = 0
     total_points_scored = 0
     category_point_games = 0
+    games_with_points = 0
     bad_games = 0
 
     # Loop through each game to count points and averages
@@ -32,6 +33,7 @@ def handle_players input_arr
       total_goals_scored += goals_scored
       total_assists_scored += assists_scored
       total_points_scored += points_scored
+      games_with_points += 1 if (goals_scored > 0 || assists_scored > 0)
       multi_point_nights += 1 if (goals_scored > 0 && assists_scored > 0)
       category_point_games += 1 if (goals_scored == 0 && assists_scored == 0 && points_scored >= 3.0)
       bad_games += 1 if (goals_scored == 0 && assists_scored == 0 && points_scored < 2.5)
@@ -42,6 +44,7 @@ def handle_players input_arr
       name: name,
       # team: team,
       games_played: games_played,
+      games_with_points: games_with_points,
       goals: total_goals_scored,
       assists: total_assists_scored,
       total_points: total_points_scored,
