@@ -8,7 +8,6 @@ Dotenv.load('./.env')
 
 
 # Local Typings 
-# goalies_uri = URI("https://lm-api-reads.fantasy.espn.com/apis/v3/games/fhl/seasons/2024/segments/0/leagues/#{ENV['LEAGUE_ID']}?view=kona_player_info")
 players_uri = URI("https://lm-api-reads.fantasy.espn.com/apis/v3/games/fhl/seasons/2024/segments/0/leagues/#{ENV['LEAGUE_ID']}?scoringPeriodId=17&view=kona_player_info")
 cookies = CGI::Cookie.new(ENV['ESPN_COOKIE']).to_s.sub(/; path=$/, '')
 
@@ -57,7 +56,6 @@ headers = {
 }
 
 # GET raw data
-# goalies_res = HTTP.get(goalies_uri, :headers => headers)
 players_res = HTTP.get(players_uri, :headers => headers)
 
 players = players_res.body
