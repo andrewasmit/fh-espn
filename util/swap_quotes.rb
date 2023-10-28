@@ -5,8 +5,3 @@ def swap_quotes(str)
   
   return str
 end
-
-
-# str = "Hi 'Andrew'. Whats 'up?'"
-
-# puts swap_quotes(str)
