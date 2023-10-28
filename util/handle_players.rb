@@ -6,10 +6,12 @@ def handle_players input_arr
   all_players_with_recent_stats = []
 
   input_arr.each do |input|
+    next if input.nil?
+
     player = input['player']
     name =  player['fullName']
     # team = find_team_name(player['proTeamId'])
-    last_six_games = player['stats'].slice(0,6)
+    last_ten_games = player['stats'].slice(0,10)
 
     # Initialize Counter Variables
     games_played = 0
@@ -22,7 +24,7 @@ def handle_players input_arr
     bad_games = 0
 
     # Loop through each game to count points and averages
-    last_six_games.each do |game|
+    last_ten_games.each do |game|
       next if game['stats'] == {}
 
       # Target specific stats
@@ -50,7 +52,7 @@ def handle_players input_arr
       goals: total_goals_scored,
       assists: total_assists_scored,
       total_points: total_points_scored,
-      average_ppg: (total_points_scored / games_played),
+      average_ppg: total_points_scored > 0 ? (total_points_scored / games_played) : 0,
       multi_point_nights: multi_point_nights,
       category_point_games: category_point_games,
       bad_games: bad_games
