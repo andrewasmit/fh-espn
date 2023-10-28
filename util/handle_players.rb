@@ -23,7 +23,7 @@ def handle_players input_arr
 
     # Loop through each game to count points and averages
     last_six_games.each do |game|
-      break if game['stats'] == {}
+      next if game['stats'] == {}
 
       # Target specific stats
       points_scored = game['appliedTotal']
