@@ -6,26 +6,31 @@ def sort_players all_players
     ratio_b = (b[:games_played] != 0) ? (b[:games_with_points].to_f / b[:games_played]) : 0
     result = ratio_b <=> ratio_a  # Reverse order for higher priority
 
-    result = 0 if b[:games_played] == 0
+    result = -1 if b[:games_played] == 0
 
     # If games_with_points ratio is the same, sort by goals (higher is better)
-    result = b[:goals] <=> a[:goals] if result.zero?
+    result = b[:goals] <=> a[:goals] if result == 0
   
     # If goals are also the same, sort by assists (higher is better)
-    result = b[:assists] <=> a[:assists] if result.zero?
+    result = b[:assists] <=> a[:assists] if result == 0
   
+    # If still the same, sort by who played more games to even out averages (higher is better)
+    result = b[:games_played] <=> a[:games_played] if result == 0
+
     # If assists are also the same, sort by average_ppg (higher is better)
-    result = b[:average_ppg] <=> a[:average_ppg] if result.zero?
+    result = b[:average_ppg] <=> a[:average_ppg] if result == 0
+
+    # After averages, sort by points scored with Goals/Assists (higher is better)
+    result = b[:category_point_games] <=> a[:category_point_games] if result == 0
   
     # If all criteria are the same, negatively impact sort by bad_games (lower is better)
-    result = a[:bad_games] <=> b[:bad_games] if result.zero?
+    result = a[:bad_games] <=> b[:bad_games] if result == 0
   
     result
   end
 
   sorted_players
 end
-
 
 # Example of each player object coming in
 {
