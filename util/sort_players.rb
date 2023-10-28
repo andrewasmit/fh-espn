@@ -2,9 +2,11 @@ def sort_players all_players
   sorted_players = all_players.sort do |a, b|
 
     # Sort by games_with_points/games_played ratio (higher is better)
-    ratio_a = a[:games_with_points].to_f / a[:games_played]
-    ratio_b = b[:games_with_points].to_f / b[:games_played]
+    ratio_a = (a[:games_played] != 0) ? (a[:games_with_points].to_f / a[:games_played]) : 0
+    ratio_b = (b[:games_played] != 0) ? (b[:games_with_points].to_f / b[:games_played]) : 0
     result = ratio_b <=> ratio_a  # Reverse order for higher priority
+
+    result = 0 if b[:games_played] == 0
 
     # If games_with_points ratio is the same, sort by goals (higher is better)
     result = b[:goals] <=> a[:goals] if result.zero?
