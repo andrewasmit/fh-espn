@@ -1,5 +1,5 @@
 require 'byebug'
-require_relative './sort_players'
+require_relative './sort_skaters'
 require_relative './print_results'
 
 def handle_skaters input_arr
