@@ -2,7 +2,7 @@ require 'byebug'
 require_relative './sort_players'
 require_relative './print_results'
 
-def handle_players input_arr
+def handle_skaters input_arr
   all_players_with_recent_stats = []
 
   input_arr.each do |input|

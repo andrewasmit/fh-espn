@@ -4,7 +4,7 @@ require 'http'
 require 'byebug'
 require 'dotenv'
 require_relative './util/swap_quotes'
-require_relative './util/handle_players'
+require_relative './util/handle_skaters'
 Dotenv.load('./.env')
 
 
@@ -41,4 +41,7 @@ headers = {
 players_res = HTTP.get(players_uri, :headers => headers)
 players = players_res.parse["players"]
 
-handle_players(players)
+# handle_players(players) if position_filter != '5'
+# puts 'Handle Goalies' if position_filter == '5'
+
+position_filter != '5' ? handle_skaters(players) : (puts 'Handle Goalies' )
