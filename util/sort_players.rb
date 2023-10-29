@@ -1,5 +1,5 @@
-def sort_players all_players
-  sorted_players = all_players.sort do |a, b|
+def sort_skaters all_skaters
+  sorted_skaters = all_skaters.sort do |a, b|
 
     # Sort by games_with_points/games_played ratio (higher is better)
     ratio_a = (a[:games_played] != 0) ? (a[:games_with_points].to_f / a[:games_played]) : 0
@@ -29,5 +29,5 @@ def sort_players all_players
     result
   end
 
-  sorted_players
+  sorted_skaters
 end

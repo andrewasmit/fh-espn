@@ -3,15 +3,15 @@ require_relative './sort_players'
 require_relative './print_results'
 
 def handle_skaters input_arr
-  all_players_with_recent_stats = []
+  all_skaters_with_recent_stats = []
 
   input_arr.each do |input|
     next if input.nil?
 
-    player = input['player']
-    name =  player['fullName']
+    skater = input['player']
+    name =  skater['fullName']
     # team = find_team_name(player['proTeamId'])
-    last_ten_games = player['stats'].slice(0,10)
+    last_ten_games = skater['stats'].slice(0,10)
 
     # Initialize Counter Variables
     games_played = 0
@@ -44,7 +44,7 @@ def handle_skaters input_arr
     end
 
     # Create our object with the targeted data
-    player_with_recent_stats = {
+    skater_with_recent_stats = {
       name: name,
       # team: team,
       games_played: games_played,
@@ -58,9 +58,9 @@ def handle_skaters input_arr
       bad_games: bad_games
     }
 
-    all_players_with_recent_stats << player_with_recent_stats
+    all_skaters_with_recent_stats << skater_with_recent_stats
   end
 
-  sorted_players = sort_players(all_players_with_recent_stats)
-  print_results(sorted_players.slice(0,15))
+  sorted_skaters = sort_skaters(all_skaters_with_recent_stats)
+  print_results(sorted_skaters.slice(0,15))
 end
