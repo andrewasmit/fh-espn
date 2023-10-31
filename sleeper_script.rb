@@ -31,6 +31,6 @@ headers = {
 players_res = HTTP.get(players_uri, :headers => headers)
 players = players_res.parse["players"]
 
-is_goalie_search = players[0]['player']['defaultPositionId'] == '5'
+is_goalie_search = players[0]['player']['defaultPositionId'] == 5
 
 is_goalie_search ?  handle_goalies(players) : handle_skaters(players)

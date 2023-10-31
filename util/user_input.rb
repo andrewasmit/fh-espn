@@ -29,7 +29,6 @@ def get_user_input
   puts "n: Search all available players (include waivers)"
   
   today_filter_user_input = gets.chomp
-
   loop do
     if today_filter_user_input == 'y' || today_filter_user_input == 'n'
       break
