@@ -7,6 +7,7 @@ require_relative './util/swap_quotes'
 require_relative './util/get_games_by_date'
 require_relative './util/handle_skaters'
 require_relative './util/handle_goalies'
+require_relative './util/user_input'
 Dotenv.load('./.env')
 
 
@@ -26,7 +27,9 @@ puts "6: All Skaters (F or D)"
 
 position_filter = gets.chomp
 
-filter = "{'players':{'filterStatus':{'value':['FREEAGENT','WAIVERS']},'filterSlotIds':{'value': [#{position_filter}]},'filterRanksForScoringPeriodIds':{'value':[17]},'sortPercChanged':{'sortPriority':1,'sortAsc':false}, 'sortPercOwned':{'sortPriority':2,'sortAsc':false}, 'limit': 150,'filterStatsForTopScoringPeriodIds':{'value':10,'additionalValue':['002024','102024','002023','012024','022024','032024','042024']}}}"
+todays_games_filter = get_user_input()
+
+filter = "{'players':{'filterStatus':{'value':['FREEAGENT','WAIVERS']},'filterSlotIds':{'value': [#{position_filter}]},#{todays_games_filter}'filterRanksForScoringPeriodIds':{'value':[17]},'sortPercChanged':{'sortPriority':1,'sortAsc':false}, 'sortPercOwned':{'sortPriority':2,'sortAsc':false}, 'limit': 150,'filterStatsForTopScoringPeriodIds':{'value':10,'additionalValue':['002024','102024','002023','012024','022024','032024','042024']}}}"
 filter = swap_quotes(filter)
 
 headers = {
