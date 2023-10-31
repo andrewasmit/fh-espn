@@ -13,7 +13,6 @@ def handle_skaters input_arr
     name =  skater['fullName']
     team = find_team_name(skater['proTeamId'])
     last_ten_games = skater['stats'].slice(0,10)
-    byebug
 
     # Initialize Counter Variables
     games_played = 0
