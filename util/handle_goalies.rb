@@ -56,7 +56,7 @@ def handle_goalies input_arr
     all_goalies_with_recent_stats << goalie_with_recent_stats
   end
 
-  byebug
+  # byebug
   sorted_goalies = sort_goalies(all_goalies_with_recent_stats)
   print_results(sorted_goalies.slice(0,15))
 end
