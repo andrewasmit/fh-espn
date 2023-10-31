@@ -10,27 +10,10 @@ require_relative './util/handle_goalies'
 require_relative './util/user_input'
 Dotenv.load('./.env')
 
-
-# get_games_by_date()
-
 # Local Typings 
 players_uri = URI("https://lm-api-reads.fantasy.espn.com/apis/v3/games/fhl/seasons/2024/segments/0/leagues/#{ENV['LEAGUE_ID']}?scoringPeriodId=17&view=kona_player_info")
 
-puts "What position do you want to target?"
-puts "0: Center"
-puts "1: Left Wing"
-puts "2: Right Wing"
-puts "3: All Forwards (C, LW, RW)"
-puts "4: Defenseman"
-puts "5: Goaltenders"
-puts "6: All Skaters (F or D)"
-
-position_filter = gets.chomp
-
-todays_games_filter = get_user_input()
-
-filter = "{'players':{'filterStatus':{'value':['FREEAGENT','WAIVERS']},'filterSlotIds':{'value': [#{position_filter}]},#{todays_games_filter}'filterRanksForScoringPeriodIds':{'value':[17]},'sortPercChanged':{'sortPriority':1,'sortAsc':false}, 'sortPercOwned':{'sortPriority':2,'sortAsc':false}, 'limit': 150,'filterStatsForTopScoringPeriodIds':{'value':10,'additionalValue':['002024','102024','002023','012024','022024','032024','042024']}}}"
-filter = swap_quotes(filter)
+filter = get_user_input()
 
 headers = {
   :origin => "https://fantasy.espn.com",
@@ -48,7 +31,6 @@ headers = {
 players_res = HTTP.get(players_uri, :headers => headers)
 players = players_res.parse["players"]
 
-# handle_players(players) if position_filter != '5'
-# puts 'Handle Goalies' if position_filter == '5'
+is_goalie_search = players[0]['player']['defaultPositionId'] == '5'
 
-position_filter != '5' ? handle_skaters(players) : handle_goalies(players)
+is_goalie_search ?  handle_goalies(players) : handle_skaters(players)
