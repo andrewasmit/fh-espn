@@ -24,9 +24,9 @@ def get_user_input
 
 
   puts "Do you want to filter for only players that are available for today?"
-  puts "(This eliminates any players currently on waivers)"
-  puts "y: Yes. Only players with games today (no waivers)"
-  puts "n: No. Search all available players"
+  puts "(this would eliminate any players currently on waivers)"
+  puts "y: Only show players with games today (no waivers)"
+  puts "n: Search all available players (include waivers)"
   
   today_filter_user_input = gets.chomp
 
@@ -41,10 +41,10 @@ def get_user_input
 
   todays_games_filter = today_filter_user_input == 'y' ? get_games_by_date() : ''
   waivers_filter = case today_filter_user_input
-  when 'y'
-    "['FREEAGENT']"
-  when 'n'
-    "['FREEAGENT','WAIVERS']"
+    when 'y'
+      "['FREEAGENT']"
+    when 'n'
+      "['FREEAGENT','WAIVERS']"
   end
 
 
