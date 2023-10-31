@@ -1,6 +1,7 @@
 require 'byebug'
 require_relative './sort_skaters'
 require_relative './print_results'
+require_relative './find_team_name'
 
 def handle_skaters input_arr
   all_skaters_with_recent_stats = []
@@ -10,8 +11,9 @@ def handle_skaters input_arr
 
     skater = input['player']
     name =  skater['fullName']
-    # team = find_team_name(player['proTeamId'])
+    team = find_team_name(skater['proTeamId'])
     last_ten_games = skater['stats'].slice(0,10)
+    byebug
 
     # Initialize Counter Variables
     games_played = 0
@@ -46,7 +48,7 @@ def handle_skaters input_arr
     # Create our object with the targeted data
     skater_with_recent_stats = {
       name: name,
-      # team: team,
+      team: team,
       games_played: games_played,
       games_with_points: games_with_points,
       goals: total_goals_scored,
