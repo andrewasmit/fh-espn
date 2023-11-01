@@ -19,5 +19,7 @@ def get_games_by_date
     end
   end
 
+  byebug
+
   "'filterProTeamIds':{'value':#{ids_of_teams_with_games}},"
 end

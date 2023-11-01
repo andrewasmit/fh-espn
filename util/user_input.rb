@@ -25,6 +25,7 @@ def get_user_input
 
   puts "Do you want to filter for only players that are available for today?"
   puts "(this would eliminate any players currently on waivers)"
+  puts "Type 'y' or 'n'"
   puts "y: Only show players with games today (no waivers)"
   puts "n: Search all available players (include waivers)"
   
@@ -45,7 +46,6 @@ def get_user_input
     when 'n'
       "['FREEAGENT','WAIVERS']"
   end
-
 
   filter = "{'players':{'filterStatus':{'value':#{waivers_filter}},'filterSlotIds':{'value': [#{position_filter}]},#{todays_games_filter}'filterRanksForScoringPeriodIds':{'value':[17]},'sortPercChanged':{'sortPriority':1,'sortAsc':false}, 'sortPercOwned':{'sortPriority':2,'sortAsc':false}, 'limit': 150,'filterStatsForTopScoringPeriodIds':{'value':10,'additionalValue':['002024','102024','002023','012024','022024','032024','042024']}}}"
   swap_quotes(filter)
