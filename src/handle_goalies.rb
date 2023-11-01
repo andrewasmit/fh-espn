@@ -1,7 +1,7 @@
 require 'byebug'
 require_relative './sort_goalies'
-require_relative './print_results'
-require_relative './find_team_name'
+require_relative '../util/print_results'
+require_relative '../util/find_team_name'
 
 def handle_goalies input_arr
   all_goalies_with_recent_stats = []

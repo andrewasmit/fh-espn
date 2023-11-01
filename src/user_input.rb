@@ -1,5 +1,5 @@
-require_relative './get_games_by_date'
-require_relative './swap_quotes'
+require_relative '../util/get_games_by_date'
+require_relative '../util/swap_quotes'
 
 def get_user_input
   puts "What position do you want to target?"

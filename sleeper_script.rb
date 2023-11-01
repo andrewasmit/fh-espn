@@ -5,9 +5,9 @@ require 'byebug'
 require 'dotenv'
 require_relative './util/swap_quotes'
 require_relative './util/get_games_by_date'
-require_relative './util/handle_skaters'
-require_relative './util/handle_goalies'
-require_relative './util/user_input'
+require_relative './src/handle_skaters'
+require_relative './src/handle_goalies'
+require_relative './src/user_input'
 Dotenv.load('./.env')
 
 # Local Typings 

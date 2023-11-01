@@ -1,7 +1,7 @@
 require 'byebug'
 require_relative './sort_skaters'
-require_relative './print_results'
-require_relative './find_team_name'
+require_relative '../util/print_results'
+require_relative '../util/find_team_name'
 
 def handle_skaters input_arr
   all_skaters_with_recent_stats = []
