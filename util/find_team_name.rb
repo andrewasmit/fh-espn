@@ -48,7 +48,7 @@ def find_team_name id
       'Pittsburgh Penguins'
     when 18 
       'San Jose Sharks'
-    when 123292
+    when 124292
       'Seattle Kraken'
     when 19 
       'St. Louis Blues'
