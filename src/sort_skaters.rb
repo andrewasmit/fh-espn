@@ -28,6 +28,6 @@ def sort_skaters all_skaters
   
     result
   end
-
+  
   sorted_skaters
 end

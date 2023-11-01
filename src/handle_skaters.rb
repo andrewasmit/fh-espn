@@ -2,6 +2,7 @@ require 'byebug'
 require_relative './sort_skaters'
 require_relative '../util/print_results'
 require_relative '../util/find_team_name'
+Dotenv.load('./.env')
 
 def handle_skaters input_arr
   all_skaters_with_recent_stats = []
@@ -26,7 +27,7 @@ def handle_skaters input_arr
 
     # Loop through each game to count points and averages
     last_ten_games.each do |game|
-      next if game['stats'] == {}
+      next if game['stats'] == {} || game['seasonId'] != ENV['SEASON_ID']
 
       # Target specific stats
       points_scored = game['appliedTotal']
