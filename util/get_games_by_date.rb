@@ -2,12 +2,12 @@
 require 'uri'
 require 'http'
 require 'byebug'
+require_relative './get_date'
 
 def get_games_by_date
-  today = Time.new
-  date = "#{today.year}#{today.month}#{today.day}"
-  
-  uri = "https://site.api.espn.com/apis/fantasy/v2/games/fhl/games?useMap=true&dates=#{date}&pbpOnly=true"
+  today = get_todays_date()
+
+  uri = "https://site.api.espn.com/apis/fantasy/v2/games/fhl/games?useMap=true&dates=#{today}&pbpOnly=true"
   
   res = HTTP.get(uri)
   games_by_date = res.parse['events']
@@ -18,8 +18,6 @@ def get_games_by_date
       ids_of_teams_with_games << team['id'].to_i
     end
   end
-
-  byebug
 
   "'filterProTeamIds':{'value':#{ids_of_teams_with_games}},"
 end
