@@ -11,7 +11,7 @@ require_relative './src/user_input'
 Dotenv.load('./.env')
 
 # Local Typings 
-players_uri = URI("https://lm-api-reads.fantasy.espn.com/apis/v3/games/fhl/seasons/2024/segments/0/leagues/#{ENV['LEAGUE_ID']}?scoringPeriodId=17&view=kona_player_info")
+players_uri = URI("https://lm-api-reads.fantasy.espn.com/apis/v3/games/fhl/seasons/#{ENV['SEASON_ID']}/segments/0/leagues/#{ENV['LEAGUE_ID']}?scoringPeriodId=17&view=kona_player_info")
 
 filter = get_user_input()
 
