@@ -64,5 +64,5 @@ def handle_skaters input_arr
   end
 
   sorted_skaters = sort_skaters(all_skaters_with_recent_stats)
-  print_results(sorted_skaters.slice(0,15))
+  print_results(sorted_skaters.slice(0,20))
 end
