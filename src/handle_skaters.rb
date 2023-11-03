@@ -27,7 +27,7 @@ def handle_skaters input_arr
 
     # Loop through each game to count points and averages
     last_ten_games.each do |game|
-      next if game['stats'] == {} || game['seasonId'] != ENV['SEASON_ID']
+      next if game['stats'] == {} || game['seasonId'] != ENV['SEASON_ID'].to_i
 
       # Target specific stats
       points_scored = game['appliedTotal']
