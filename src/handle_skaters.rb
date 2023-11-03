@@ -60,7 +60,7 @@ def handle_skaters input_arr
       bad_games: bad_games
     }
 
-    all_skaters_with_recent_stats << skater_with_recent_stats
+    all_skaters_with_recent_stats << skater_with_recent_stats unless skater_with_recent_stats[:games_played] < 1
   end
 
   sorted_skaters = sort_skaters(all_skaters_with_recent_stats)

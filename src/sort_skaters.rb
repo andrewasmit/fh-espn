@@ -1,6 +1,4 @@
 def sort_skaters all_skaters
-  # filtered_skaters = all_skaters.select{ |skater| skater[:games_played] > 0 }
-  # byebug
   sorted_skaters = all_skaters.sort do |a, b|
 
     # Sort by games_with_points/games_played ratio (higher is better)
