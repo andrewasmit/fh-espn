@@ -6,8 +6,6 @@ def sort_skaters all_skaters
     ratio_b = (b[:games_played] != 0) ? (b[:games_with_points].to_f / b[:games_played]) : 0
     result = ratio_b <=> ratio_a  # Reverse order for higher priority
 
-    # result = -1 if b[:games_played] == 0
-
     # If games_with_points ratio is the same, sort by goals (higher is better)
     result = b[:goals] <=> a[:goals] if result == 0
   
