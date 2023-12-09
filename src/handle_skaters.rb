@@ -25,6 +25,9 @@ def handle_skaters input_arr
     games_with_points = 0
     bad_games = 0
 
+    # Check to see if this skater has at least played the last 2 games
+    has_not_played_last_two_games = last_ten_games[0]['stats'] == {} && last_ten_games[1]['stats'] == {}
+
     # Loop through each game to count points and averages
     last_ten_games.each do |game|
       next if game['stats'] == {} || game['seasonId'] != ENV['SEASON_ID'].to_i
@@ -60,7 +63,7 @@ def handle_skaters input_arr
       bad_games: bad_games
     }
 
-    all_skaters_with_recent_stats << skater_with_recent_stats unless skater_with_recent_stats[:games_played] < 1
+    all_skaters_with_recent_stats << skater_with_recent_stats unless skater_with_recent_stats[:games_played] < 1 || has_not_played_last_two_games
   end
 
   sorted_skaters = sort_skaters(all_skaters_with_recent_stats)
