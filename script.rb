@@ -3,6 +3,9 @@ require 'uri'
 require 'http'
 require 'byebug'
 require 'dotenv'
+require 'mail'
+
+# Local Dependencies
 require_relative './util/swap_quotes'
 require_relative './util/get_games_by_date'
 require_relative './src/handle_skaters'
