@@ -1,7 +1,11 @@
+# External Dependencies
 require 'byebug'
+
+# Local Dependencies
 require_relative './sort_skaters'
-require_relative '../util/print_results'
 require_relative '../util/find_team_name'
+require_relative '../util/print_results'
+require_relative '../util/send_email'
 Dotenv.load('./.env')
 
 def handle_skaters input_arr

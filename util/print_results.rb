@@ -6,4 +6,5 @@ def print_results sorted_players
   end
 
   puts names
+  names
 end
