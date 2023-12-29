@@ -6,14 +6,19 @@ require 'dotenv'
 Dotenv.load('./.env')
 
 # Define Mailer class
-class MyCustomMailer < ActionMailer::Base
+class Mailer < ActionMailer::Base
   default from: ENV['MY_EMAIL']
 
-  def send_email(recipient_email_address)
+  def send_email(results)
+    # body_content = "<strong><u>All Available Skaters Playing Today</u></strong>\n\n"
+    # body_content += results.join("\n")
+
     mail(
-      to: recipient_email_address, 
-      subject: "Hello from Andrew's Fantasy Hockey Script", 
-      body: 'This is a test email sent using ActionMailer!'
+      to: ENV['TEST_EMAIL'], 
+      subject: "Andrew's Fantasy Hockey Sleepers", 
+      # body: body_content,
+      body: results.join("\n"),
+      # content_type: "text/html"
       )
   end
 end
@@ -29,6 +34,3 @@ ActionMailer::Base.smtp_settings = {
   authentication: :plain,
   enable_starttls_auto: true
 }
-
-recipient_email = ENV['TEST_EMAIL']
-MyCustomMailer.send_email(recipient_email).deliver_now

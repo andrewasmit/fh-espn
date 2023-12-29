@@ -1,11 +1,12 @@
 # External Dependencies
+require 'action_mailer'
 require 'byebug'
 
 # Local Dependencies
 require_relative './sort_skaters'
+require_relative './send_email'
 require_relative '../util/find_team_name'
 require_relative '../util/print_results'
-require_relative '../util/send_email'
 Dotenv.load('./.env')
 
 def handle_skaters input_arr
@@ -71,5 +72,6 @@ def handle_skaters input_arr
   end
 
   sorted_skaters = sort_skaters(all_skaters_with_recent_stats)
-  print_results(sorted_skaters.slice(0,20))
+  results = print_results(sorted_skaters.slice(0,20))
+  Mailer.send_email(results).deliver_now
 end
